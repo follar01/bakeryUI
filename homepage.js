@@ -51,3 +51,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Get elements
+var hamburgerButton = document.getElementById('hamburgerButton');
+var navLinks = document.getElementById('navLinks');
+var overlay = document.getElementById('overlay');
+var pageContent = document.getElementById('pageContent');
+
+// Debugging: Check if button is clicked
+hamburgerButton.addEventListener('click', function () {
+    console.log('Hamburger button clicked'); // Check if this logs in the console
+
+    if (navLinks.classList.contains('active')) {
+        // Hide menu and remove blur
+        navLinks.classList.remove('active');
+        overlay.classList.add('hidden');
+        pageContent.classList.remove('blur');
+    } else {
+        // Show menu and apply blur
+        navLinks.classList.add('active');
+        overlay.classList.remove('hidden');
+        pageContent.classList.add('blur');
+    }
+});
+
+// Close the menu if overlay is clicked
+overlay.addEventListener('click', function () {
+    navLinks.classList.remove('active');
+    overlay.classList.add('hidden');
+    pageContent.classList.remove('blur');
+});
